@@ -24,3 +24,7 @@ git clone https://github.com/youngjun-yoo16/ABGScraper.git
 #2. Run the script
 python3 app.py
 ```
+## Further improvements
+- Allow users to enter their own specific keywords for which they want to filter.
+- Make it into a fully functional web application for the ease of access.
+- Allow users to set specific time period for filtering posts based on the post date.
