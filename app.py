@@ -33,16 +33,18 @@ class getInstagramProfile():
         self.bot.login(input("Input your username: "), input("Input your password: ") ) 
         with open(filename + '.csv', 'w', newline = '', encoding = 'utf-8') as file:
             writer = csv.writer(file)
+            writer.writerow(["Post Caption", "Post Date", "Post URL", "Mentions in caption", "Tagged Users"])
             posts = instaloader.Profile.from_username(self.bot.context, username).get_posts()
             for post in posts:
-                if "bay area" or "California" or "california" or "computer science" or "Computer Science" or "Computer" in str(post.caption) :
+                matches = ["san francisco", "california", "bay area", "computer science", "computer"]
+                if any(keyword in str(post.caption).lower() for keyword in matches):
                     print("Post date: " + str(post.date))
                     print("Post profile: " + post.profile)
                     print("Post caption: " + post.caption)
                     
                     posturl = "https://www.instagram.com/p/" + post.shortcode
                     print("Post url: " + posturl)
-                    writer.writerow(["post", post.caption, post.date, posturl, post.caption_mentions, post.tagged_users])
+                    writer.writerow([post.caption, post.date, posturl, post.caption_mentions, post.tagged_users])
                     print("\n\n")
                     
 if __name__ == '__main__':
