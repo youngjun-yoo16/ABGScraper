@@ -4,7 +4,7 @@ By the time many college freshmen arrive on campus this fall, they’ll have alr
 I developed this scraper with a simple Python script so that I can quickly find Instagram accounts of ABGs from California, bay area. Moreover, I ain't looking for ABGs in liberal arts major. I only want ABGs who are a prospective Computer Science or a Data Science major. Hence, I 
 ## Functionality
 By running the script, a CSV file containing columns - Post Caption, Post Date, Post URL, Mentions in Captions, and Tagged Users - will be generated in the following order. If I see a female-ish name introducing themselves in the post caption, I can instantly send friend request to them by referring to the "Tagged Users" column.
-##Requirements
+## Requirements
 ```
 #1. Python3
 Make sure Python3 is installed and check its version by python -V 
