@@ -1,5 +1,5 @@
 # ABGScraper
-## A scraper for finding ABGs in San Francisco, California, Bay Area
+## A scraper for finding prospective ABGs from San Francisco, California, Bay Area
 By the time many college freshmen arrive on campus this fall, they’ll have already met their roommate, their core friends, and many of their classmates on Instagram. They’re connecting through class accounts, Instagram pages set up by one or several incoming members of a college’s freshman class to help everyone meet before the school year officially starts. <br> <br>
 I developed this scraper with a simple Python script so that I can quickly find Instagram accounts of Asian Baby Girls (ABGs) from California, bay area without having to go through every post on `thefreshmanclub_purdue`, a class account for Purdue. 
 
