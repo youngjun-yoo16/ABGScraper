@@ -7,6 +7,7 @@ By running the script, a CSV file containing columns - Post Caption, Post Date, 
 ```
 #1. Python3
 Make sure Python3 is installed and check its version by python -V 
+
 #2. Requirements
 pip install -r requirements.txt
 ```
