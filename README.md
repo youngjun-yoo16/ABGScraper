@@ -4,7 +4,7 @@ By the time many college freshmen arrive on campus this fall, they’ll have alr
 I developed this scraper with a simple Python script so that I can quickly find Instagram accounts of Asian Baby Girls (ABGs) from California, bay area without having to go through every post on `thefreshmanclub_purdue`, a class account for Purdue. 
 
 ## Functionality
-By running the script, a CSV file containing columns - Post Caption, Post Date, Post URL, Mentions in Captions, and Tagged Users in the following order- will be generated under the same folder with the repository. If I see a female-ish name introducing themselves in the post caption, I can instantly send friend request to them by referring to the "Tagged Users" column.
+By running the script, a CSV file containing columns - Post Caption, Post Date, Post URL, Mentions in Captions, and Tagged Users in the following order - will be generated under the same folder with the repository. If I see a female-ish name introducing themselves in the post caption, I can instantly send friend request to them by referring to the "Tagged Users" column.
 
 ## Requirements
 ```
