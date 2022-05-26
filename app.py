@@ -33,7 +33,7 @@ class getInstagramProfile():
         self.bot.login(input("Input your username: "), input("Input your password: ") ) 
         with open(filename + '.csv', 'w', newline = '', encoding = 'utf-8') as file:
             writer = csv.writer(file)
-            writer.writerow(["Post Caption", "Post Date", "Post URL", "Mentions in caption", "Tagged Users"])
+            writer.writerow(["Post Caption", "Post Date", "Post URL", "Mentions in Caption", "Tagged Users"])
             posts = instaloader.Profile.from_username(self.bot.context, username).get_posts()
             for post in posts:
                 matches = ["san francisco", "california", "bay area", "computer science", "computer"]
