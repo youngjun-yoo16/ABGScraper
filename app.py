@@ -1,65 +1,52 @@
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-import time
+from operator import contains
+import instaloader
+import csv
 
-PATH = r"C:\Users\USER\Downloads\chromedriver_win32\chromedriver.exe"
-
-# scrape function
-def scrape_data(username):
-     
-    driver = webdriver.Chrome(PATH)
-    URL = "https://www.instagram.com"
-    driver.get(URL)
+class getInstagramProfile():
+    def __init__(self) -> None:
+        self.bot = instaloader.Instaloader()
     
-    username = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "input[name='username']")))
-    password = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "input[name='password']")))
-    username.clear()
-    username.send_keys("test.account0916")
-    password.clear()
-    password.send_keys("dbdudwns")
-
-    WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']"))).click()
-    alert = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//button[contains(text(), "나중에 하기")]'))).click()
-    alert2 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//button[contains(text(), "나중에 하기")]'))).click()
+    def download_users_profile_picture(self, username):
+        self.bot.download_profile(username, profile_pic_only=True)
+        
+    def get_users_followers(self, username):
+        '''Note: login required to get a profile's followers.'''
+        self.bot.login(input("Input your username: "), input("Input your password: ") ) 
+        profile = instaloader.Profile.from_username(self.bot.context, username)
+        file = open("follower_names.txt","a+")
+        for follower in profile.get_followers():
+            user_name = follower.username
+            file.write(username + "\n")
+            print(user_name)
     
-    account_name = "thefreshmanclub_purdue"
-    driver.get("https://www.instagram.com/" + account_name + "/")
-    time.sleep(5)
-    
-    scrolldown = driver.execute_script("window.scrollTo(0, document.body.scrollHeight);var scrolldown=document.body.scrollHeight;return scrolldown;")
-    match=False
-    while(match==False):
-        last_count = scrolldown
-        time.sleep(3)
-        scrolldown = driver.execute_script("window.scrollTo(0, document.body.scrollHeight);var scrolldown=document.body.scrollHeight;return scrolldown;")
-        if last_count == scrolldown:
-            match=True
+    def get_users_followings(self, username):
+        '''Note: login required to get a profile's followings.'''
+        self.bot.login(input("input your username: "), input("input your password: ") ) 
+        profile = instaloader.Profile.from_username(self.bot.context, username)
+        file = open("following_names.txt","a+")
+        for followee in profile.get_followees():
+            user_name = followee.username
+            file.write(user_name + "\n")
+            print(user_name)
             
-    posts = []
-    links = driver.find_elements_by_tag_name('a')
-    for link in links:
-        post = link.get_attribute('class')
-        if '_7UhW9   xLCgt      MMzan   KV-D4           se6yk       T0kll ' in post:
-            posts.append(post)
-    print(posts)
- 
-    '''
-    soup = BeautifulSoup(driver.page_source, "html.parser")
-    return soup.find("span",{"class": "eg3Fv"})
-    '''
-    
-# main function
-if __name__=="__main__":
-     
-    # user name
-    username = "thefreshmanclub_purdue"
-     
-    # calling scrape function
-    data = scrape_data(username)
-     
-    # printing the info
-    print(data)
+    def get_post_info_csv(self, filename, username):
+        '''Note: login required to get post details.'''
+        self.bot.login(input("input your username: "), input("input your password: ") ) 
+        with open(filename + '.csv', 'w', newline = '', encoding = 'utf-8') as file:
+            writer = csv.writer(file)
+            posts = instaloader.Profile.from_username(self.bot.context, username).get_posts()
+            for post in posts:
+                if "bay area" or "California" or "california" or "computer science" or "Computer Science" or "Computer" in str(post.caption) :
+                    print("post date: " + str(post.date))
+                    print("post profile: " + post.profile)
+                    print("post caption: " + post.caption)
+                    
+                    posturl = "https://www.instagram.com/p/" + post.shortcode
+                    print("Post url: " + posturl)
+                    writer.writerow(["post", post.caption, post.date, posturl, post.caption_mentions, post.tagged_users])
+                    print("\n\n")
+                    
+if __name__ == '__main__':
+    client = getInstagramProfile()
+    username = input("Enter the username of the account which you want to scrap: ")
+    client.get_post_info_csv("user_info", username)
