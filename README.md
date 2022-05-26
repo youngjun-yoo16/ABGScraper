@@ -9,7 +9,6 @@ By running the script, a CSV file containing columns - Post Caption, Post Date, 
 Make sure Python3 is installed and check its version by python -V 
 #2. Requirements
 pip install -r requirements.txt
-
 ```
 ##How to run
 ```
@@ -18,5 +17,4 @@ git clone https://github.com/youngjun-yoo16/ABGScraper.git
 
 #2. Run the script
 python3 app.py
-
 ```
