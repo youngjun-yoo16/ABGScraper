@@ -1,4 +1,3 @@
-from operator import contains
 import instaloader
 import csv
 
@@ -7,13 +6,13 @@ class getInstagramProfile():
         self.bot = instaloader.Instaloader()
     
     def download_users_profile_picture(self, username):
-        self.bot.download_profile(username, profile_pic_only=True)
+        self.bot.download_profile(username, profile_pic_only = True)
         
     def get_users_followers(self, username):
         '''Note: login required to get a profile's followers.'''
         self.bot.login(input("Input your username: "), input("Input your password: ") ) 
         profile = instaloader.Profile.from_username(self.bot.context, username)
-        file = open("follower_names.txt","a+")
+        file = open("follower_names.txt", "a+")
         for follower in profile.get_followers():
             user_name = follower.username
             file.write(username + "\n")
@@ -21,9 +20,9 @@ class getInstagramProfile():
     
     def get_users_followings(self, username):
         '''Note: login required to get a profile's followings.'''
-        self.bot.login(input("input your username: "), input("input your password: ") ) 
+        self.bot.login(input("Input your username: "), input("Input your password: ") ) 
         profile = instaloader.Profile.from_username(self.bot.context, username)
-        file = open("following_names.txt","a+")
+        file = open("following_names.txt", "a+")
         for followee in profile.get_followees():
             user_name = followee.username
             file.write(user_name + "\n")
@@ -31,15 +30,15 @@ class getInstagramProfile():
             
     def get_post_info_csv(self, filename, username):
         '''Note: login required to get post details.'''
-        self.bot.login(input("input your username: "), input("input your password: ") ) 
+        self.bot.login(input("Input your username: "), input("Input your password: ") ) 
         with open(filename + '.csv', 'w', newline = '', encoding = 'utf-8') as file:
             writer = csv.writer(file)
             posts = instaloader.Profile.from_username(self.bot.context, username).get_posts()
             for post in posts:
                 if "bay area" or "California" or "california" or "computer science" or "Computer Science" or "Computer" in str(post.caption) :
-                    print("post date: " + str(post.date))
-                    print("post profile: " + post.profile)
-                    print("post caption: " + post.caption)
+                    print("Post date: " + str(post.date))
+                    print("Post profile: " + post.profile)
+                    print("Post caption: " + post.caption)
                     
                     posturl = "https://www.instagram.com/p/" + post.shortcode
                     print("Post url: " + posturl)
