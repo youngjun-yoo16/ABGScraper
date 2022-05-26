@@ -3,7 +3,7 @@ import csv
 
 class getInstagramProfile():
     def __init__(self) -> None:
-        self.bot = instaloader.instaloader()
+        self.bot = instaloader.Instaloader()
     
     def download_users_profile_picture(self, username):
         self.bot.download_profile(username, profile_pic_only=True)
@@ -55,4 +55,4 @@ class getInstagramProfile():
 if __name__ == '__main__':
     client = getInstagramProfile()
     username = input("Enter the username of the account which you want to scrap: ")
-    client.get_post_info_csv("")
+    client.get_post_info_csv("user_info")
