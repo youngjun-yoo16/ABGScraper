@@ -43,7 +43,7 @@ class getInstagramProfile():
                     
                     posturl = "https://www.instagram.com/p/" + post.shortcode
                     print("Post url: " + posturl)
-                    writer.writerow(["post", post.caption, post.date, posturl,post.caption_mentions, post.tagged_users, post.title])
+                    writer.writerow(["post", post.caption, post.date, posturl, post.caption_mentions, post.tagged_users])
                     print("\n\n")
                     
 if __name__ == '__main__':
