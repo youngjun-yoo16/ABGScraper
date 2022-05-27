@@ -36,12 +36,13 @@ class getInstagramProfile():
             writer.writerow(["Post Caption", "Post Date", "Post URL", "Mentions in Caption", "Tagged Users"])
             posts = instaloader.Profile.from_username(self.bot.context, username).get_posts()
             for post in posts:
-                matches = ["san francisco", "california", "bay area", "computer science", "data science"]
-                if any(keyword in str(post.caption).lower() for keyword in matches):
+                location_match = ["san francisco", "california", "bay area"]
+                major_match = ["computer science", "data science", "cs", "ds"]
+                if any(keyword in str(post.caption).lower() for keyword in location_match) and any (keyword in str(post.caption).lower() for keyword in major_match):
                     print("Post date: " + str(post.date))
                     print("Post profile: " + post.profile)
                     print("Post caption: " + post.caption)
-                    
+
                     posturl = "https://www.instagram.com/p/" + post.shortcode
                     print("Post url: " + posturl)
                     writer.writerow([post.caption, post.date, posturl, post.caption_mentions, post.tagged_users])
