@@ -37,7 +37,7 @@ class getInstagramProfile():
             posts = instaloader.Profile.from_username(self.bot.context, username).get_posts()
             for post in posts:
                 location_match = ["san francisco", "california", "bay area"]
-                major_match = ["computer science", "data science", "cs", "ds"]
+                major_match = ["computer science", "data science", "comp sci", "data sci"]
                 if any(keyword in str(post.caption).lower() for keyword in location_match) and any (keyword in str(post.caption).lower() for keyword in major_match):
                     print("Post date: " + str(post.date))
                     print("Post profile: " + post.profile)
