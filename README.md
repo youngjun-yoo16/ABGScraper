@@ -1,7 +1,8 @@
 # ABGScraper
 ## A scraper for finding ABGs from San Francisco, California, Bay Area
 By the time many college freshmen arrive on campus this fall, they’ll have already met their roommate, their core friends, and many of their classmates on Instagram. They’re connecting through class accounts, Instagram pages set up by one or several incoming members of a college’s freshman class to help everyone meet before the school year officially starts. <br> <br>
-I developed this scraper with a simple Python script so that you can quickly find Instagram accounts of Asian Baby Girls (ABGs) from California, bay area without having to go through every post on `thefreshmanclub_purdue`, a class account for Purdue. 
+These accounts typically feature user-submitted photos and paragraph-long biographies of incoming students, often including their intended major, whether they’re looking for a roommate, and their personal Instagram handle. <br><br>
+I developed this scraper with a simple Python script that scans through every post in a class acount searching for those posts that contain specific user-inputted keywords. In this way, you can quickly find Instagram accounts of Asian Baby Girls (ABGs) from California, bay area without having to manually go through every post on `thefreshmanclub_purdue`, a class account for Purdue. 
 
 ## Functionality
 By running the script, a CSV file containing columns - `Post Caption`, `Post Date`, `Post URL`, `Mentions in Captions`, and `Tagged Users` in the following order - will be generated under the same folder with the repository. If you see a female-ish name introducing themselves in the post caption, you can instantly send friend request to them by referring to the `Tagged Users` column. <br><br>
