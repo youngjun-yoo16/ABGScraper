@@ -50,5 +50,11 @@ class getInstagramProfile():
                     
 if __name__ == '__main__':
     client = getInstagramProfile()
-    username = input("Enter the username of the account which you want to scrap: ")
-    client.get_post_info_csv("user_info", username)
+    username = input("Enter the username of the account: ")
+    number = input("Enter 1 for downloading the profile pic of the account and 2 for scraping: ")
+    if int(number) == 1:
+         client.download_users_profile_picture(username)
+    elif int(number) == 2:
+        client.get_post_info_csv("user_info", username)
+    else:
+        print("Enter a valid number.")
