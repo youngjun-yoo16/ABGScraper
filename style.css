@@ -39,6 +39,11 @@ body {
     box-shadow: 2px 3px 10px black;
 }
 
+#name #startBtn {
+    background-color: green;
+    font-size: 150%;
+}
+
 #name button:hover {
     transition: 0.2s;
     opacity: 0.5;
