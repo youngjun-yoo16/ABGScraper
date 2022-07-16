@@ -1,0 +1,24 @@
+* {
+    font-family: monospace;
+}
+
+h1 {
+    font-size: 300%;
+}
+
+.title {
+    text-shadow: 5px 5px 10px black;
+    font-weight: 900;
+    margin-top: 0;
+}
+
+p {
+    font-size: 150%;
+}
+
+body {
+    background-color: rgb(49, 49, 49);
+    color: white;
+    padding: 3em;
+    text-align: center;
+}
