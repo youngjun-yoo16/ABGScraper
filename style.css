@@ -10,6 +10,11 @@ h1 {
     text-shadow: 7px 7px 10px black;
     font-weight: 900;
     margin-top: 0;
+    margin-bottom: 0;
+}
+
+img {
+    margin-bottom: 3em;
 }
 
 p, label {
