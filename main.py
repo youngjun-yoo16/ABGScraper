@@ -17,7 +17,12 @@ async def home(request: Request):
 #In this case, operations is the same as request.form["operations"]
 @app.post("/")
 async def get_username(operations: str = Form()):
-    print(operations)
+    #print(operations)
+    if operations == "pfpDownload":
+        pass
+    else:
+        pass
+        
     
 
 @app.get("/pfp")
