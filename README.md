@@ -5,7 +5,7 @@ I developed this scraper with a simple Python script that scans through every po
 
 ## Functionality
 By running the script, a CSV file containing columns - `Post Caption`, `Post Date`, `Post URL`, `Mentions in Captions`, and `Tagged Users` in the following order - will be generated under the same folder with the repository. If you see a female-ish name introducing themselves in the post caption, you can instantly send friend request to them by referring to the `Tagged Users` column. <br><br>
-![filtered_1](https://github.com/youngjun-yoo16/ABGScraper/blob/main/img/filtered_2.png?raw=true) <br><br>
+![filtered_1](https://github.com/youngjun-yoo16/abgscraper/blob/main/static/img/filtered_2.png) <br><br>
 Moreover, you can freely enter the username of the class acount of your respective college as a command line input whenever it asks you to enter the username of the account which you want to scrap. By this, you can find incoming ABGs from your respective college. As of now, location keywords are initially setted to San Francisco, California, Bay Area and major keywords are setted to find Computer Science and Data Science majors. I plan to make this a more versatile feature by allowing users to set their own location and major keywords for filtering posts.
 
 ## Requirements
