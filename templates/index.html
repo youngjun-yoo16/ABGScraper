@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>ABGScraper</title>
+{% endblock %}
+
+{% block body %}
+    <div id="name">
+      <label
+        >Enter the username of the account which you want to perform action on:
+      </label>
+      <input id="username" type="text" name="username" />
+      <button id="submitBtn">Submit</button>
+      <br /><br /><br />
+      <label>What do you want to do? </label>
+      <select name="operations" id="operations">
+        <option value="" disabled selected>Select your option</option>
+        <option value="pfpDownload">Download the profile picture</option>
+        <option value="scrap">Scrap</option>
+      </select>
+      <br /><br /><br /><br /><br /><br />
+      <button id="startBtn">Start</button>
+    </div>
+{% endblock %}
