@@ -1,5 +1,8 @@
+import csv
+import shutil
 import uvicorn
 import instaloader
+from pathlib import Path
 from fastapi import FastAPI, Request, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -15,24 +18,32 @@ nameStorage = "null"
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+#Endpoint for validate button.
 @app.post("/")
-async def get_profile_picture(request: Request, username = Form()):
-    if username != None and username != 'pfpDownload' and username != 'scrap':
+async def validate_username(request: Request, username = Form()):
+    if username != 'pfpDownload' and username != 'scrap':
+        print(username)
+        try:
+            bot.download_profile(username, profile_pic_only = True)
+            dirpath = Path(username) 
+            if dirpath.exists() and dirpath.is_dir():
+                shutil.rmtree(dirpath)
+        except:
+            print("This profile does not exist!")
         return templates.TemplateResponse("pfp.html", {"request": request})
 
 #FastApi treats the parameter of the post method as that of flask's request.form[name] 
 #In this case, operations is the same as request.form["operations"]
 @app.post("/")
 async def get_profile_picture(request: Request, username = Form(), operations = Form()):
-    if username != None:
-        return templates.TemplateResponse("pfp.html", {"request": request})
-        
-    #return RedirectResponse("/pfp")
     if operations == "pfpDownload":
+        print("poop")
         return templates.TemplateResponse("pfp.html", {"request": request})
-    else:
-        nameStorage = username
-        get_post_info_csv("user_info", )
+    #else:
+    #    print(username)
+    #    pass
+    #    nameStorage = username
+    #    get_post_info_csv("user_info", )
         
 def get_post_info_csv(filename, username):
     '''Note: login required to get post details.'''
@@ -60,4 +71,4 @@ async def download_users_profile_picture(request: Request):
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=5000, reload=True)
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
