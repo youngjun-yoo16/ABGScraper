@@ -6,8 +6,10 @@
     <label
       >Enter the username of the account which you want to perform action on:
     </label>
-    <input id="username" type="text" name="username" />
-    <button id="submitBtn">Submit</button>
+    <form action="/" methods="GET"> 
+      <input id="username" type="text" name="username" required/>
+      <button type="submit">Validate</button>
+    </form>
     <br /><br /><br />
     <label>What do you want to do? </label>
     <select name="operations" id="operations">
