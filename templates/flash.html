@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block head %}
+<title>ABGScraper</title>
+{% endblock %} {% block body %}
+<div id="name">
+  <form action="/flash" method="GET">
+    <p>This profile doesn't exist!</p>
+    <p>Please check the username once again!</p>
+  </form>
+  <br />
+  <button type="button" onclick="history.back()">Go Back</button>
+</div>
+{% endblock %}

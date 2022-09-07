@@ -29,7 +29,7 @@ async def validate_username(request: Request, username = Form()):
             if dirpath.exists() and dirpath.is_dir():
                 shutil.rmtree(dirpath)
         except:
-            print("This profile does not exist!")
+            return templates.TemplateResponse("flash.html", {"request": request})
         return templates.TemplateResponse("pfp.html", {"request": request})
 
 #FastApi treats the parameter of the post method as that of flask's request.form[name] 
@@ -51,7 +51,7 @@ def get_post_info_csv(filename, username):
     with open(filename + '.csv', 'w', newline = '', encoding = 'utf-8') as file:
         writer = csv.writer(file)
         writer.writerow(["Post Caption", "Post Date", "Post URL", "Mentions in Caption", "Tagged Users"])
-        posts = instaloader.Profile.from_username(self.bot.context, username).get_posts()
+        posts = instaloader.Profile.from_username(bot.context, username).get_posts()
         for post in posts:
             location_match = ["san francisco", "california", "bay area"]
             major_match = ["computer science", "data science", "comp sci", "data sci"]
@@ -68,6 +68,10 @@ def get_post_info_csv(filename, username):
 async def download_users_profile_picture(request: Request):
     bot.download_profile(nameStorage, profile_pic_only = True)
     return templates.TemplateResponse("pfp.html", {"request": request})
+
+@app.get("/flash")
+async def display_flash_page(request: Request):
+    return templates.TemplateResponse("flash.html", {"request": request})
 
 
 if __name__ == "__main__":
