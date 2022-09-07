@@ -22,7 +22,6 @@ async def home(request: Request):
 @app.post("/")
 async def validate_username(request: Request, username = Form()):
     if username != 'pfpDownload' and username != 'scrap':
-        print(username)
         try:
             bot.download_profile(username, profile_pic_only = True)
             dirpath = Path(username) 
@@ -30,7 +29,6 @@ async def validate_username(request: Request, username = Form()):
                 shutil.rmtree(dirpath)
         except:
             return templates.TemplateResponse("flash.html", {"request": request})
-        return templates.TemplateResponse("pfp.html", {"request": request})
 
 #FastApi treats the parameter of the post method as that of flask's request.form[name] 
 #In this case, operations is the same as request.form["operations"]
