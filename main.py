@@ -27,6 +27,7 @@ async def validate_username(request: Request, username = Form()):
             dirpath = Path(username) 
             if dirpath.exists() and dirpath.is_dir():
                 shutil.rmtree(dirpath)
+                return templates.TemplateResponse("flash_exists.html", {"request": request})
         except:
             return templates.TemplateResponse("flash.html", {"request": request})
 
